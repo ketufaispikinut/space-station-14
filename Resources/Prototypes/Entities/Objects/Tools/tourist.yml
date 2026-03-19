@@ -1,0 +1,37 @@
+- type: entity
+  name: travel camera
+  parent: [BaseItem]
+  id: TravelCamera
+  description: A portable camera with a roll just big enough to capture 10 memories to cherish forevermore.
+  components:
+    - type: Sprite
+      sprite: Objects/Tools/travel_camera.rsi
+      layers:
+      - state: travel-camera
+        map: [ "enum.FlashVisualLayers.BaseLayer" ]
+      - state: travel-camera-flashing
+        map: [ "enum.FlashVisualLayers.LightLayer" ]
+        visible: false
+        shader: unshaded
+    # it cant be used by revs since to convert they need a melee attack
+    - type: Flash
+      # unlike the flash, the camera will not stun you when you use it
+      selfFlash: false
+    - type: LimitedCharges
+      maxCharges: 10
+    - type: Item
+      size: Small
+      sprite: Objects/Tools/travel_camera.rsi
+    - type: UseDelay
+      delay: 4 # has to be the same as the FlashingTime datafield in FlashComponent
+    - type: UseDelayOnMeleeHit
+    - type: StaticPrice
+      # it is very cheap. that's why it has only 10 charges
+      price: 30
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.FlashVisuals.Flashing:
+          enum.FlashVisualLayers.LightLayer:
+            True: {visible: true}
+            False: {visible: false}
