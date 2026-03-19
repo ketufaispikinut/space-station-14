@@ -15,7 +15,11 @@ public sealed partial class FlashComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool FlashOnUse = true;
-
+    /// <summary>
+    /// Flashes the user too when used in hand?
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool SelfFlash = true;
     /// <summary>
     /// Flash the target when melee attacking them?
     /// </summary>

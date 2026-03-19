@@ -90,7 +90,7 @@ public abstract class SharedFlashSystem : EntitySystem
             return;
 
         args.Handled = true;
-        FlashArea(ent.Owner, args.User, ent.Comp.Range, ent.Comp.AoeFlashDuration, ent.Comp.SlowTo, true, ent.Comp.Probability);
+        FlashArea(ent.Owner, args.User, ent.Comp.Range, ent.Comp.AoeFlashDuration, ent.Comp.SlowTo, true, ent.Comp.Probability, ent.Comp.Sound, ent.Comp.SelfFlash);
     }
 
     // needed for the flash lantern and interrogator lamp
@@ -196,7 +196,7 @@ public abstract class SharedFlashSystem : EntitySystem
     /// <param name="displayPopup">Whether or not to show a popup to the target player.</param>
     /// <param name="probability">Chance to be flashed. Rolled separately for each target in range.</param>
     /// <param name="sound">Additional sound to play at the source.</param>
-    public void FlashArea(EntityUid source, EntityUid? user, float range, TimeSpan flashDuration, float slowTo = 0.8f, bool displayPopup = false, float probability = 1f, SoundSpecifier? sound = null)
+    public void FlashArea(EntityUid source, EntityUid? user, float range, TimeSpan flashDuration, float slowTo = 0.8f, bool displayPopup = false, float probability = 1f, SoundSpecifier? sound = null, bool selfFlash = true)
     {
         var transform = Transform(source);
         var mapPosition = _transform.GetMapCoordinates(transform);
@@ -205,6 +205,10 @@ public abstract class SharedFlashSystem : EntitySystem
         _entityLookup.GetEntitiesInRange(transform.Coordinates, range, _entSet);
         foreach (var entity in _entSet)
         {
+            // we do not flash ourselves
+            if (entity == user && !selfFlash) {
+                continue;
+            }
             if (!SharedRandomExtensions.PredictedProb(_timing, probability, GetNetEntity(entity)))
                 continue;
 
