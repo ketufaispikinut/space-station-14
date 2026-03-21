@@ -35,3 +35,8 @@
           enum.FlashVisualLayers.LightLayer:
             True: {visible: true}
             False: {visible: false}
+    # its clothing so it can be worn on the neck
+    - type: Clothing
+      slots:
+        - neck
+      sprite: Objects/Tools/travel_camera.rsi

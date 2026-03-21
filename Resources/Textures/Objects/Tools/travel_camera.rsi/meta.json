@@ -3,11 +3,16 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "by ketufaispikinut (github)",
     "size":{
-        "x":16,
-        "y":16
+        "x":32,
+        "y":32
     },
     "states":[
         {"name":"travel-camera"},
-        {"name":"travel-camera-flashing"}
+        {"name":"travel-camera-flashing"},
+        {
+            "name": "equipped-NECK",
+            "directions": 4,
+            "size":{"x":32,"y":32}
+        }
     ]
 }
