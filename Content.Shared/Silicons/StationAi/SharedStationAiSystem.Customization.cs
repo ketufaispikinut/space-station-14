@@ -1,4 +1,5 @@
 using Content.Shared.Holopad;
+using Content.Shared.Intellicard;
 using Content.Shared.Mobs;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -118,25 +119,53 @@ public abstract partial class SharedStationAiSystem
         // This data is handled manually in the client StationAiSystem
         _appearance.SetData(entity.Owner, StationAiVisualLayers.Icon, stateData);
     }
+    private void CustomizeAppearanceCard(Entity<IntellicardComponent> entity, StationAiState state)
+    {
+        var stationAi = GetCardInsertedAI(entity);
+        Log.Log(LogLevel.Info, "entity acquired");
+        if (!TryComp<StationAiCustomizationComponent>(stationAi, out var stationAiCustomization) ||
+            !TryGetCustomizedAppearanceData((stationAi.Value, stationAiCustomization), out var layerData, returnCardValue: true) ||
+            !layerData.TryGetValue(state.ToString(), out var stateData))
+        {
+            Log.Log(LogLevel.Info, "well we failed, fuck");
+            Log.Log(LogLevel.Info, "custom comp " + HasComp<StationAiCustomizationComponent>(stationAi));
+            Log.Log(LogLevel.Info, "state: " + state.ToString());
+            return;
+        }
+        Log.Log(LogLevel.Info, "info card set yes yay");
+        // This data is handled manually in the client StationAiSystem
+        _appearance.SetData(entity.Owner, StationAiVisualLayers.Icon, stateData);
+    }
 
     /// <summary>
     /// Returns a dictionary containing the station AI's appearance for different states.
     /// </summary>
     /// <param name="entity">The station AI.</param>
-    /// <param name="layerData">The apperance data, indexed by possible AI states.</param>
+    /// <param name="layerData">The appearance data, indexed by possible AI states.</param>
+    /// <param name="returnCardValue">If set to true, this returns the designated appearance data for the intellicarded AI instead of the normal core data.</param>
     /// <returns>True if the apperance data was found.</returns>
-    public bool TryGetCustomizedAppearanceData(Entity<StationAiCustomizationComponent> entity, [NotNullWhen(true)] out Dictionary<string, PrototypeLayerData>? layerData)
+    public bool TryGetCustomizedAppearanceData(Entity<StationAiCustomizationComponent> entity, [NotNullWhen(true)] out Dictionary<string, PrototypeLayerData>? layerData, bool returnCardValue = false)
     {
         layerData = null;
-
+        // I removed the count check here since I believe its redundent?
         if (!entity.Comp.ProtoIds.TryGetValue(_stationAiCoreCustomGroupProtoId, out var protoId) ||
-           !_protoManager.Resolve(protoId, out var prototype) ||
-            prototype.LayerData.Count == 0)
+           !_protoManager.Resolve(protoId, out var prototype)
+           )
         {
+            Log.Log(LogLevel.Info, "failed cuz of cant get this, terrible, i am sad");
             return false;
         }
-
-        layerData = prototype.LayerData;
+        Log.Log(LogLevel.Info, "protoid was "+protoId);
+        Log.Log(LogLevel.Info, "should be a-okay");
+        if (returnCardValue)
+        {
+            layerData = prototype.CardLayerData;
+            Log.Log(LogLevel.Info, "k " + string.Join("\n", prototype.CardLayerData));
+        }
+        else
+        {
+            layerData = prototype.LayerData;
+        }
 
         return true;
     }

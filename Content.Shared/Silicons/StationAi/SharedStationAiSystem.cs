@@ -506,6 +506,16 @@ public abstract partial class SharedStationAiSystem : EntitySystem
 
         return container.ContainedEntities[0];
     }
+    private EntityUid? GetCardInsertedAI(Entity<IntellicardComponent> ent)
+    {
+        if (!_containers.TryGetContainer(ent.Owner, StationAiHolderComponent.Container, out var container) ||
+            container.ContainedEntities.Count != 1)
+        {
+            return null;
+        }
+
+        return container.ContainedEntities[0];
+    }
 
     protected virtual void OnAiInsert(Entity<StationAiCoreComponent> ent, ref EntInsertedIntoContainerMessage args)
     {
@@ -558,10 +568,16 @@ public abstract partial class SharedStationAiSystem : EntitySystem
             state = customization.State;
         }
 
-        // If the entity is not an AI core, let generic visualizers handle the appearance update
+        // If the entity is not an AI core, let generic visualizers handle the appearance update (unless if it's an intellicard, in which we also do additional work)
         if (!TryComp<StationAiCoreComponent>(entity, out var stationAiCore))
         {
             _appearance.SetData(entity.Owner, StationAiVisualLayers.Icon, state);
+            // This is an intellicard, so we try to set its appearance properly
+            if (TryComp<IntellicardComponent>(entity, out var intellicard))
+            {
+                Log.Log(LogLevel.Info, "customizing");
+                CustomizeAppearanceCard((entity, intellicard), state);
+            }
             return;
         }
 

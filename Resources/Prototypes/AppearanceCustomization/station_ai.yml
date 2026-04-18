@@ -43,6 +43,10 @@
     Dead:
       sprite: Mobs/Silicon/station_ai.rsi
       state: ai_dead
+  cardLayerData:
+    Occupied:
+      sprite: Objects/Devices/ai_card.rsi
+      state: full
 
 - type: stationAiCustomization
   parent: StationAiIconBase
@@ -55,6 +59,10 @@
     Dead:
       sprite: Mobs/Silicon/station_ai.rsi
       state: ai_angel_dead
+  cardLayerData:
+    Occupied:
+      sprite: Objects/Devices/ai_card.rsi
+      state: angel
 
 - type: stationAiCustomization
   parent: StationAiIconBase
@@ -67,6 +75,10 @@
     Dead:
       sprite: Mobs/Silicon/station_ai.rsi
       state: ai_dead
+  cardLayerData:
+    Occupied:
+      sprite: Objects/Devices/ai_card.rsi
+      state: bliss
 
 - type: stationAiCustomization
   parent: StationAiIconBase
@@ -79,6 +91,10 @@
     Dead:
       sprite: Mobs/Silicon/station_ai.rsi
       state: ai_clown_dead
+  cardLayerData:
+    Occupied:
+      sprite: Objects/Devices/ai_card.rsi
+      state: clown
 
 - type: stationAiCustomization
   parent: StationAiIconBase
@@ -91,6 +107,10 @@
     Dead:
       sprite: Mobs/Silicon/station_ai.rsi
       state: ai_dead
+  cardLayerData:
+    Occupied:
+      sprite: Objects/Devices/ai_card.rsi
+      state: urist
 
 - type: stationAiCustomization
   parent: StationAiIconBase
@@ -103,6 +123,10 @@
     Dead:
       sprite: Mobs/Silicon/station_ai.rsi
       state: "ai_heartline_dead"
+  cardLayerData:
+    Occupied:
+      sprite: Objects/Devices/ai_card.rsi
+      state: lifeline
 
 - type: stationAiCustomization
   parent: StationAiIconBase
@@ -115,6 +139,10 @@
     Dead:
       sprite: Mobs/Silicon/station_ai.rsi
       state: "ai_dead"
+  cardLayerData:
+    Occupied:
+      sprite: Objects/Devices/ai_card.rsi
+      state: smile
 
 # Holograms
 - type: stationAiCustomization

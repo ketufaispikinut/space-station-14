@@ -144,13 +144,13 @@
     layers:
     - state: base
     - state: full
-      map: ["unshaded"]
+      map: ["enum.StationAiVisualLayers.Icon"]
       shader: unshaded
   - type: Appearance
   - type: GenericVisualizer
     visuals:
       enum.StationAiVisualLayers.Icon:
-        unshaded:
+        enum.StationAiVisualLayers.Icon:
           Empty: { state: empty }
           Occupied: { state: full }
           Rebooting: { state: dead }

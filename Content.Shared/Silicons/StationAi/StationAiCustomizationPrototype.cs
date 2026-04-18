@@ -25,8 +25,9 @@ public sealed partial class StationAiCustomizationPrototype : IPrototype, IInher
     [DataField(required: true)]
     public Dictionary<string, PrototypeLayerData> LayerData = new();
     /// <summary>
-    /// Same as LayerData but for the intellicard only
+    /// Same as LayerData but for the intellicard only. It is thus optional as holograms are separated from core / intellicard sprites.
     /// </summary>
+    [DataField]
     public Dictionary<string, PrototypeLayerData> CardLayerData = new();
 
     /// <summary>

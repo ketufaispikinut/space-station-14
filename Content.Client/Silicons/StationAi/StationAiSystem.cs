@@ -25,7 +25,7 @@ public sealed partial class StationAiSystem : SharedStationAiSystem
         SubscribeLocalEvent<StationAiOverlayComponent, LocalPlayerDetachedEvent>(OnAiDetached);
         SubscribeLocalEvent<StationAiOverlayComponent, ComponentInit>(OnAiOverlayInit);
         SubscribeLocalEvent<StationAiOverlayComponent, ComponentRemove>(OnAiOverlayRemove);
-        SubscribeLocalEvent<StationAiCoreComponent, AppearanceChangeEvent>(OnAppearanceChange);
+        SubscribeLocalEvent<StationAiHolderComponent, AppearanceChangeEvent>(OnAppearanceChange);
     }
 
     private void OnAiOverlayInit(Entity<StationAiOverlayComponent> ent, ref ComponentInit args)
@@ -76,16 +76,19 @@ public sealed partial class StationAiSystem : SharedStationAiSystem
         RemoveOverlay();
     }
 
-    private void OnAppearanceChange(Entity<StationAiCoreComponent> entity, ref AppearanceChangeEvent args)
+    private void OnAppearanceChange(Entity<StationAiHolderComponent> entity, ref AppearanceChangeEvent args)
     {
         if (args.Sprite == null)
             return;
-
+        Log.Log(LogLevel.Info, "DBG THE THING ON CLI SIDE");
         if (_appearance.TryGetData<PrototypeLayerData>(entity.Owner, StationAiVisualLayers.Icon, out var layerData, args.Component))
+        {
+            Log.Log(LogLevel.Info, "dwjebuirew2");
             _sprite.LayerSetData((entity.Owner, args.Sprite), StationAiVisualLayers.Icon, layerData);
+        }
 
         _sprite.LayerSetVisible((entity.Owner, args.Sprite), StationAiVisualLayers.Icon, layerData != null);
-    }
+    }    
 
     public override void Shutdown()
     {
