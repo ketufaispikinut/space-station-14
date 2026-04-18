@@ -24,6 +24,10 @@ public sealed partial class StationAiCustomizationPrototype : IPrototype, IInher
     /// </summary>
     [DataField(required: true)]
     public Dictionary<string, PrototypeLayerData> LayerData = new();
+    /// <summary>
+    /// Same as LayerData but for the intellicard only
+    /// </summary>
+    public Dictionary<string, PrototypeLayerData> CardLayerData = new();
 
     /// <summary>
     /// Key used to index the prototype layer data and extract a preview of the customization (for menus, etc)
