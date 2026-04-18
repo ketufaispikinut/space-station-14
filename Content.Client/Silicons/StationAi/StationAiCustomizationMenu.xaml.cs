@@ -30,12 +30,12 @@ public sealed partial class StationAiCustomizationMenu : FancyWindow
 
         var stationAiSystem = _entManager.System<SharedStationAiSystem>();
 
-        // Load customziation data
+        // Load customization data
         _entManager.TryGetComponent<StationAiCoreComponent>(owner, out var stationAiCore);
         stationAiSystem.TryGetHeld((owner, stationAiCore), out var insertedAi);
         _entManager.TryGetComponent<StationAiCustomizationComponent>(insertedAi, out var stationAiCustomization);
 
-        // Create UI entires for each group of customizations
+        // Create UI entries for each group of customizations
         var groupPrototypes = _protoManager.EnumeratePrototypes<StationAiCustomizationGroupPrototype>();
         groupPrototypes = groupPrototypes.OrderBy(x => x.ID); // To ensure consistency in presentation
 
