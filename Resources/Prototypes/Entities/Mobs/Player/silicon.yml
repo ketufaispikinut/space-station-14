@@ -143,7 +143,7 @@
     sprite: Objects/Devices/ai_card.rsi
     layers:
     - state: base
-    - state: full
+    - state: icon
       map: ["enum.StationAiVisualLayers.Icon"]
       shader: unshaded
   - type: Appearance
@@ -151,10 +151,10 @@
     visuals:
       enum.StationAiVisualLayers.Icon:
         enum.StationAiVisualLayers.Icon:
-          Empty: { state: empty }
-          Occupied: { state: full }
-          Rebooting: { state: dead }
-          Dead: { state: dead }
+          StationAiState.Empty: { state: empty }
+          StationAiState.Occupied: { state: full }
+          StationAiState.Rebooting: { state: dead }
+          StationAiState.Dead: { state: dead }
   - type: Intellicard
 
 - type: entity

@@ -572,8 +572,8 @@ public abstract partial class SharedStationAiSystem : EntitySystem
         if (!TryComp<StationAiCoreComponent>(entity, out var stationAiCore))
         {
             _appearance.SetData(entity.Owner, StationAiVisualLayers.Icon, state);
-            // This is an intellicard, so we try to set its appearance properly
-            if (TryComp<IntellicardComponent>(entity, out var intellicard))
+            // This is an intellicard, so we try to set its appearance properly (if it has an AI in it)
+            if (TryGetHeld(entity, out var _) && TryComp<IntellicardComponent>(entity, out var intellicard))
             {
                 Log.Log(LogLevel.Info, "customizing");
                 CustomizeAppearanceCard((entity, intellicard), state);

@@ -132,6 +132,7 @@ public abstract partial class SharedStationAiSystem
             Log.Log(LogLevel.Info, "state: " + state.ToString());
             return;
         }
+        Log.Log(LogLevel.Info, "setting state: " + state.ToString());
         Log.Log(LogLevel.Info, "info card set yes yay");
         // This data is handled manually in the client StationAiSystem
         _appearance.SetData(entity.Owner, StationAiVisualLayers.Icon, stateData);

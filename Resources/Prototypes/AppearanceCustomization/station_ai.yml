@@ -31,6 +31,16 @@
   previewBackground:
     sprite: Mobs/Silicon/station_ai.rsi
     state: base
+  cardLayerData:
+    Dead:
+      sprite: Objects/Devices/ai_card.rsi
+      state: dead
+    Rebooting:
+      sprite: Objects/Devices/ai_card.rsi
+      state: dead
+    Empty:
+      sprite: Objects/Devices/ai_card.rsi
+      state: empty
 
 - type: stationAiCustomization
   parent: StationAiIconBase
