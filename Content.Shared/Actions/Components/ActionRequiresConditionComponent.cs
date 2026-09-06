@@ -4,7 +4,7 @@ using Robust.Shared.GameStates;
 namespace Content.Shared.Actions.Components;
 
 /// <summary>
-/// Checks for an EntityCondition before doing the action
+/// Checks for an EntityCondition (or many) before doing the action
 /// </summary>
 [RegisterComponent, NetworkedComponent, Access(typeof(ActionRequiresConditionSystem))]
 public sealed partial class ActionRequiresConditionComponent : Component

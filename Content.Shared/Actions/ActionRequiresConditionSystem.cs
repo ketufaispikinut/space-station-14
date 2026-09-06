@@ -7,7 +7,6 @@ namespace Content.Shared.Actions;
 
 public sealed partial class ActionRequiresConditionSystem : EntitySystem
 {
-    [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedEntityConditionsSystem _conditions = default!;
 
     [SubscribeLocalEvent]
