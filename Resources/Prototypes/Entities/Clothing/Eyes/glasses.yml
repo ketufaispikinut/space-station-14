@@ -1,13 +1,13 @@
 - type: entity
   abstract: true
+  parent: BaseScrewingRefinable
   id: ClothingEyesGlassesBase
   components:
   - type: ToolRefinable
-    qualityNeeded: Screwing
-    verbText: refined-screw-verb-name
     refineResult:
     - id: GlassLens
       amount: 2
+    - id: PartRodMetal1
 
 - type: entity
   parent: ClothingEyesBase
