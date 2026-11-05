@@ -51,6 +51,10 @@
     balance:
       ChangelingDNA: 50
     inputValidation: false
+  - type: EntityEffectOnAsh
+    effects:
+    - !type:SpawnEntity
+      entity: LingAshedEntity
   mindRoles:
   - MindRoleChangeling
 

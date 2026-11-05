@@ -1,6 +1,7 @@
 using Content.Shared.Body.Components;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
+using Content.Shared.Morgue;
 using Content.Shared.Popups;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
@@ -33,7 +34,8 @@ public sealed partial class BurnBodyBehavior : IThresholdBehavior
 
         var bodyIdentity = Identity.Entity(bodyId, system.EntityManager);
         sharedPopupSystem.PopupCoordinates(Loc.GetString(PopupMessage, ("name", bodyIdentity)), transformSystem.GetMoverCoordinates(bodyId), PopupType.LargeCaution);
-
+        var ev = new EntityAshedEvent();
+        system.EntityManager.EventBus.RaiseLocalEvent(bodyId, ev);
         system.EntityManager.QueueDeleteEntity(bodyId);
     }
 }

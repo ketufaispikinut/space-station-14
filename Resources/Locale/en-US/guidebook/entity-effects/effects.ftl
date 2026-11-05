@@ -450,6 +450,11 @@ entity-effect-guidebook-area-reaction =
         *[other] cause
     } a smoke or foam reaction for {NATURALFIXED($duration, 3)} {MANY("second", $duration)}
 
+entity-effect-guidebook-spill-solution = { $chance ->
+        [1] Causes
+        *[other] cause
+    } a solution to be spilled on the floor
+
 entity-effect-guidebook-add-to-solution-reaction =
     { $chance ->
         [1] Causes

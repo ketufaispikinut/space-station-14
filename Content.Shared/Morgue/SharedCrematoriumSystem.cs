@@ -1,4 +1,5 @@
 using Content.Shared.Database;
+using Content.Shared.EntityEffects;
 using Content.Shared.Examine;
 using Content.Shared.Mind;
 using Content.Shared.Morgue.Components;
@@ -26,6 +27,7 @@ public abstract partial class SharedCrematoriumSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedEntityEffectsSystem _effects = default!;
 
     public override void Initialize()
     {
@@ -142,7 +144,9 @@ public abstract partial class SharedCrematoriumSystem : EntitySystem
             {
                 var item = ent.Comp2.Contents.ContainedEntities[i];
                 _container.Remove(item, ent.Comp2.Contents);
-                PredictedDel(item);
+                var ev = new EntityAshedEvent();
+                RaiseLocalEvent(item, ev);
+                QueueDel(item);
             }
             PredictedTrySpawnInContainer(ent.Comp1.LeftOverProtoId, ent.Owner, ent.Comp2.Contents.ID, out _);
         }
@@ -167,4 +171,15 @@ public abstract partial class SharedCrematoriumSystem : EntitySystem
             FinishCooking((uid, crematorium, null));
         }
     }
+
+    [SubscribeLocalEvent]
+    private void OnEntityAshed(Entity<EntityEffectOnAshComponent> ent, ref EntityAshedEvent args)
+    {
+        _effects.ApplyEffects(ent.Owner, ent.Comp.Effects);
+    }
 }
+
+/// <summary>
+/// Raised when an entity is ashed
+/// </summary>
+public sealed class EntityAshedEvent : EntityEventArgs { }

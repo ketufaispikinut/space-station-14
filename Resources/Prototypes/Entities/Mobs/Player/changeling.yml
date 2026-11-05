@@ -25,6 +25,11 @@
   - type: Store
     balance:
       ChangelingDNA: 50
+  - type: EntityEffectOnAsh
+    effects:
+    - !type:SpawnEntity
+      entity: LingAshedEntity
+      predicted: false
 
 - type: entity
   parent:
@@ -78,6 +83,10 @@
   - type: ZombieImmune
   - type: Puller
     needsHands: false
+  - type: EntityEffectOnAsh
+    effects:
+    - !type:SpawnEntity
+      entity: LingAshedEntity
   - type: Tag # Removes DoorBumpOpener
     tags:
       [ ]
@@ -230,3 +239,44 @@
     enabledPopup: changeling-fake-mindshield-enabled
     disabledPopup: changeling-fake-mindshield-disabled
     action: ActionChangelingFakeMindshieldToggle
+
+# spawned by lings upon being ashed
+- type: entity
+  parent: PuddleTemporary
+  id: PuddleLivingTissue
+  suffix: LivingTissue (15u)
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: LivingTissue
+        Quantity: 15
+
+# we make an entity to not copy all effects everywhere
+- type: entity
+  id: LingAshedEntity
+  components:
+  - type: Sprite
+    drawdepth: SmallMobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: slug
+      sprite: Mobs/Animals/headslug.rsi
+  - type: TimedDespawn
+    lifetime: 50
+  - type: TriggerOnSpawn
+  - type: SmokeOnTrigger
+    duration: 2
+    spreadAmount: 1
+  - type: EntityEffectOnTrigger
+    effects:
+    - !type:PlaySound
+      sound: /Audio/Voice/Human/malescream_guardian.ogg
+      predicted: false
+    - !type:SpillSolution
+      solution:
+        reagents:
+        - ReagentId: LivingTissue
+          Quantity: 15
+        - ReagentId: Blood
+          Quantity: 40
