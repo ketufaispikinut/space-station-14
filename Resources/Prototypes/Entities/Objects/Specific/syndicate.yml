@@ -115,6 +115,19 @@
     tags:
     - NukeOpsUplink
 
+# instigator uplink
+- type: entity
+  parent: BaseUplinkRadio
+  id: BaseUplinkRadioInstigator25TC
+  suffix: 25 TC, Instigator
+  components:
+  - type: Store
+    balance:
+      Telecrystal: 25
+  - type: Tag
+    tags:
+    - NukeOpsUplink
+
 - type: entity
   parent: BaseUplinkRadio
   id: BaseUplinkRadioDebug

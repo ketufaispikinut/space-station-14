@@ -160,6 +160,18 @@
 
 - type: entity
   categories: [ HideSpawnMenu, Spawner ]
+  parent: SpawnPointLoneNukeOperative
+  id: SpawnPointInstigator
+  components:
+  - type: GhostRole
+    name: roles-antag-instigator-agent-name
+    description: roles-antag-instigator-objective
+    rules: ghost-role-information-instigator-rules
+    mindRoles:
+    - MindRoleInstigator
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
   parent: BaseAntagSpawner
   id: SpawnPointGhostDragon
   components:

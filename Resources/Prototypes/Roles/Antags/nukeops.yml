@@ -213,3 +213,64 @@
   parent: SyndicateOperativeGearFull
   equipment:
     pocket2: BaseUplinkRadio60TC
+
+# Instigator things
+
+- type: antagSpecifier
+  parent: BaseNukeops
+  id: Instigator
+  spawnerPrototype: SpawnPointInstigator
+  pickPlayer: false
+  startingGear: SyndicateInstigatorGearFull
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSyndicateNormal
+    nameFormat: name-format-nukie-operator
+  mindRoles:
+  - MindRoleInstigator
+
+- type: antagSpecifier
+  parent: BaseNukeops
+  id: InstigatorCommander
+  spawnerPrototype: SpawnPointInstigator
+  pickPlayer: false
+  startingGear: SyndicateInstigatorCommanderGearFull
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSyndicateElite
+    nameFormat: name-format-nukie-commander
+  mindRoles:
+  - MindRoleInstigator
+
+#Instigators
+
+- type: startingGear
+  parent: SyndicateOperativeGearCivilian
+  id: SyndicateInstigatorGearFull
+  equipment:
+    id: SyndiOperativePDA
+    jumpsuit: ClothingUniformJumpsuitOperative
+    head: ClothingHeadHelmetSwat
+    mask: ClothingMaskGasSyndicate
+    eyes: ClothingEyesHudSyndicate
+    outerClothing: ClothingOuterArmorBase
+    gloves: ClothingHandsGlovesCombat
+    back: ClothingBackpackSyndicate
+    shoes: ClothingShoesBootsCombatFilled
+  storage:
+    back:
+    - PinpointerSyndicateNuclear
+    - DeathAcidifierImplanter
+
+- type: startingGear
+  parent: SyndicateInstigatorGearFull
+  id: SyndicateInstigatorCommanderGearFull
+  equipment:
+    id: SyndiCommanderPDA
+    neck: SyndicateWhistle
+    jumpsuit: ClothingUniformJumpsuitSyndieFormal
+    head: ClothingHeadHelmetSwatSyndicate
+    pocket1: BaseUplinkRadioInstigator25TC
+    pocket2: EnergySword
