@@ -216,6 +216,15 @@
 
 # Instigator things
 
+- type: antag
+  id: Instigator
+  name: roles-antag-instigator-name
+  antagonist: true
+  objective: roles-antag-instigator-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 5h
+
 - type: antagSpecifier
   parent: BaseNukeops
   id: Instigator
