@@ -67,6 +67,9 @@ changeling-not-enough-chemicals = We don't have enough Chemicals.
 # fleshtomb
 changeling-fleshtomb-not-dead = We can only entomb a corpse.
 
+# rapid recovery
+changeling-rapid-recovery-dead = We aren't strong enough.
+
 # other
 changeling-action-fail-generic = We cannot do this right now.
 changeling-paused-map-name = Changeling identity storage map

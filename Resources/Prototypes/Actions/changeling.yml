@@ -584,12 +584,14 @@
   parent: BaseDoAfterAction
   id: ActionChangelingRapidRecovery
   name: Rapid Recovery
-  description: "Rapidly closes our wounds, but is a bit loud and makes you jitter, while weakening you for a short period of time after use. \n\nRequires 10 Chemicals."
+  description: "Rapidly closes our wounds, but is a bit loud and makes you jitter, while weakening you for a short period of time after use.\nCan be used while unconscious or cuffed. \n\nRequires 10 Chemicals."
   components:
   - type: Action
     useDelay: 1
     itemIconStyle: BigAction
     raiseOnAction: true
+    checkCanInteract: false
+    checkConsciousness: false
   - type: Sprite
     sprite: Interface/Actions/changeling2.rsi
     layers:
@@ -602,6 +604,10 @@
       - condition: !type:SatiationCondition
           satiationType: Chemicals
           min: 10
+      - condition: !type:MobStateCondition
+          mobstate: Dead
+          inverted: true
+        failPopup: changeling-rapid-recovery-dead
     effects:
       Performer:
       - !type:Satiate
@@ -612,6 +618,7 @@
     delay: 2
     breakOnMove: false
     breakOnDamage: false
+    requireCanInteract: false
     repeat: true
   - type: InstantAction
     event: !type:EntityEffectInstantActionEvent
