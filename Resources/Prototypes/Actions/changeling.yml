@@ -581,12 +581,11 @@
 - type: entity
   parent: BaseDoAfterAction
   id: ActionChangelingRapidRecovery
-  name: RapidRecovery
+  name: Rapid Recovery
   description: "Rapidly closes our wounds, but is a bit loud and makes you jitter, while weakening you for a short period of time after use. \n\nRequires 10 Chemicals."
   components:
   - type: Action
     useDelay: 1
-    raiseOnAction: true
     itemIconStyle: BigAction
   - type: Sprite
     sprite: Interface/Actions/changeling2.rsi
@@ -610,11 +609,12 @@
     delay: 2
     breakOnMove: false
     breakOnDamage: false
-    event: !type:EntityEffectActionEvent
     repeat: true
+  - type: InstantAction
+    event: !type:EntityEffectInstantActionEvent
   - type: EntityEffectAction
     effects:
-    - !type:EvenHealthChange # why not
+    - !type:EvenHealthChange
       damage:
         Burn: -5
         Toxin: -5
