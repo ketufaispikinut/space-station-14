@@ -589,18 +589,19 @@
   - type: Action
     useDelay: 1
     itemIconStyle: BigAction
+    raiseOnAction: true
   - type: Sprite
     sprite: Interface/Actions/changeling2.rsi
     layers:
     - state: fleshmend
   - type: ActionRequirements
-    failPopup: changeling-action-fail-generic # Currently no way to tell which condition failed
+    failPopup: changeling-not-enough-chemicals
     failPopupType: SmallCaution
-    conditions:
+    requirements:
       Performer:
-      - !type:SatiationCondition
-        satiationType: Chemicals
-        min: 10
+      - condition: !type:SatiationCondition
+          satiationType: Chemicals
+          min: 10
     effects:
       Performer:
       - !type:Satiate
@@ -615,20 +616,22 @@
   - type: InstantAction
     event: !type:EntityEffectInstantActionEvent
   - type: EntityEffectAction
+    targetUser: true
     effects:
     - !type:EvenHealthChange
       damage:
-        Burn: -5
+        Burn: -2
         Toxin: -5
         Airloss: -5
-        Brute: -2
-        Genetic: -5
+        Brute: -6
+        Genetic: -4
     - !type:ModifyBleed
       amount: -2
     - !type:Jitter
-    - !type:GenericStatusEffect
-      key: StatusEffectFrail # Reduced combat viability
-      time: 20
+    - !type:ModifyStatusEffect
+      effectProto: StatusEffectFrail # Reduced combat viability
+      time: 10
+      type: Update
     - !type:CleanBloodstream
       cleanseRate: 5
     - !type:PlaySound
