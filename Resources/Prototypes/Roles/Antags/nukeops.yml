@@ -264,7 +264,7 @@
     head: ClothingHeadHelmetSwat
     mask: ClothingMaskGasSyndicate
     eyes: ClothingEyesHudSyndicate
-    outerClothing: ClothingOuterArmorBase
+    outerClothing: ClothingOuterArmorBasic
     gloves: ClothingHandsGlovesCombat
     back: ClothingBackpackSyndicate
     shoes: ClothingShoesBootsCombatFilled
