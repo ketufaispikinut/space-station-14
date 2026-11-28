@@ -241,3 +241,17 @@
   - !type:ListingLimitedStockCondition
     stock: 1
   productAction: ActionChangelingFleshtomb
+
+- type: listing
+  id: ChangelingFleshmend
+  name: changeling-catalog-fleshmend-name
+  description: changeling-catalog-fleshmend-desc
+  applyToMob: true
+  cost:
+    ChangelingDNA: 10
+  categories:
+  - ChangelingStoreUtility
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  productAction: ActionChangelingFleshmend

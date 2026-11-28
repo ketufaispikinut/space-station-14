@@ -49,3 +49,6 @@ changeling-catalog-fleshtomb-name = Fleshtomb
 changeling-catalog-fleshtomb-desc = Preserve a corpse in a fleshy prison, slowly harvesting their DNA. It is very fragile and must be preserved in proper atmosphere to not fall apart.
 
                                     Gives a small bonus if the corpse was never in a fleshtomb before.
+
+changeling-catalog-fleshmend-name = Fleshmend
+changeling-catalog-fleshmend-desc = Rapidly heals your wounds and purges your bloodstream of chemicals, but isn't silent and weakens you for some time.

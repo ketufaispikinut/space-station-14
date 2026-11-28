@@ -577,3 +577,58 @@
         mobstate: Dead
       sound:
         collection: gib
+
+- type: entity
+  parent: BaseDoAfterAction
+  id: ActionChangelingFleshmend
+  name: Fleshtmend
+  description: "Rapidly closes our wounds, but is a bit loud and makes you jitter, while weakening you for a short period of time after use. \n\nRequires 10 Chemicals."
+  components:
+  - type: Action
+    useDelay: 1
+    raiseOnAction: true
+    itemIconStyle: BigAction
+  - type: Sprite
+    sprite: Interface/Actions/changeling2.rsi
+    layers:
+    - state: fleshmend
+  - type: ActionRequirements
+    failPopup: changeling-action-fail-generic # Currently no way to tell which condition failed
+    failPopupType: SmallCaution
+    conditions:
+      Performer:
+      - !type:SatiationCondition
+        satiationType: Chemicals
+        min: 10
+    effects:
+      Performer:
+      - !type:Satiate
+        satiationType: Chemicals
+        factor: -10
+  - type: DoAfterArgs
+    examineText: changeling-cocoon-doafter
+    delay: 2
+    breakOnMove: false
+    breakOnDamage: false
+    event: !type:EntityEffectActionEvent
+    repeat: true
+  - type: EntityEffectAction
+    effects:
+    - !type:EvenHealthChange # why not
+      damage:
+        Burn: -5
+        Toxin: -5
+        Airloss: -5
+        Brute: -2
+        Genetic: -5
+    - !type:ModifyBleed
+      amount: -2
+    - !type:Jitter
+    - !type:GenericStatusEffect
+      effectProto: StatusEffectFrail # Reduced combat viability
+      time: 20
+    - !type:CleanBloodstream
+      cleanseRate: 5
+    - !type:PlaySound
+      sound:
+        collection: gib
