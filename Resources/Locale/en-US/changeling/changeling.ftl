@@ -69,7 +69,7 @@ changeling-action-fail-generic = We cannot do this right now.
 changeling-paused-map-name = Changeling identity storage map
 changeling-cocoon-success = We encase {THE($target)} in a fleshy tomb.
 changeling-cocoon-doafter = [color=red]{ CAPITALIZE(SUBJECT($user)) } { CONJUGATE-BE($user) } covering { THE($target) } in a fleshy mass![/color]
-changeling-flesh-doafter = [color=red]{ CAPITALIZE(POSS-ADJ($user)) } flesh is shimmering and moving! [/color]
+changeling-rapid-recovery-doafter = [color=red]{ CAPITALIZE(POSS-ADJ($user)) } flesh is shimmering and moving! [/color]
 # horror transformation
 changeling-horror-alert-time-name = Remaining time
 changeling-horror-alert-time-desc = When this counter reaches 0, we will have exhausted our strength.

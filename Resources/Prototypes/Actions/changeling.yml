@@ -580,8 +580,8 @@
 
 - type: entity
   parent: BaseDoAfterAction
-  id: ActionChangelingFleshmend
-  name: Fleshtmend
+  id: ActionChangelingRapidRecovery
+  name: RapidRecovery
   description: "Rapidly closes our wounds, but is a bit loud and makes you jitter, while weakening you for a short period of time after use. \n\nRequires 10 Chemicals."
   components:
   - type: Action
@@ -606,7 +606,7 @@
         satiationType: Chemicals
         factor: -10
   - type: DoAfterArgs
-    examineText: changeling-cocoon-doafter
+    examineText: changeling-rapid-recovery-doafter
     delay: 2
     breakOnMove: false
     breakOnDamage: false
@@ -625,7 +625,7 @@
       amount: -2
     - !type:Jitter
     - !type:GenericStatusEffect
-      effectProto: StatusEffectFrail # Reduced combat viability
+      key: StatusEffectFrail # Reduced combat viability
       time: 20
     - !type:CleanBloodstream
       cleanseRate: 5

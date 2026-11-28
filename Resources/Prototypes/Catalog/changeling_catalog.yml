@@ -243,9 +243,9 @@
   productAction: ActionChangelingFleshtomb
 
 - type: listing
-  id: ChangelingFleshmend
-  name: changeling-catalog-fleshmend-name
-  description: changeling-catalog-fleshmend-desc
+  id: ChangelingRapidRecovery
+  name: changeling-catalog-rapid-recovery-name
+  description: changeling-catalog-rapid-recovery-desc
   applyToMob: true
   cost:
     ChangelingDNA: 10
@@ -254,4 +254,4 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
-  productAction: ActionChangelingFleshmend
+  productAction: ActionChangelingRapidRecovery

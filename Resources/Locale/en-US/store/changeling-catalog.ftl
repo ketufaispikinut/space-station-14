@@ -50,5 +50,5 @@ changeling-catalog-fleshtomb-desc = Preserve a corpse in a fleshy prison, slowly
 
                                     Gives a small bonus if the corpse was never in a fleshtomb before.
 
-changeling-catalog-fleshmend-name = Fleshmend
-changeling-catalog-fleshmend-desc = Rapidly heals your wounds and purges your bloodstream of chemicals, but isn't silent and weakens you for some time.
+changeling-catalog-rapid-recovery-name = Rapid Recovery
+changeling-catalog-rapid-recovery-desc = Rapidly heals your wounds and purges your bloodstream of chemicals, but isn't silent and weakens you for some time.
