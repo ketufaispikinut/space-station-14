@@ -630,10 +630,10 @@
     - !type:Jitter
     - !type:ModifyStatusEffect
       effectProto: StatusEffectFrail # Reduced combat viability
-      time: 10
+      time: 16
       type: Update
     - !type:CleanBloodstream
-      cleanseRate: 5
+      cleanseRate: 10
     - !type:PlaySound
       sound:
         collection: gib
