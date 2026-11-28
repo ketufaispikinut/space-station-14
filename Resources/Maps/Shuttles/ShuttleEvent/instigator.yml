@@ -3322,7 +3322,7 @@ entities:
     - type: Transform
       parent: 1
       pos: 9.5,0.5
-- proto: SpawnPointGhostNukeOperative
+- proto: SpawnPointInstigator
   entities:
   - uid: 524
     components:
